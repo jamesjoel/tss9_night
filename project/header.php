@@ -24,12 +24,33 @@
       <li class="nav-item">
         <a class="nav-link" href="about.php">About</a>
       </li>
+      <?php
+      // the isset() function is used for check the variable is create or not
+      if(isset($_SESSION['is_user_logged_in']))
+      { ?>
+        <li class="nav-item">
+        <a class="nav-link" href="dashboard.php">Dashboard</a>
+      </li>    
       <li class="nav-item">
+        <a class="nav-link" href="logout.php">Logout</a>
+      </li>  
+      <?php 
+      }
+      else
+      { ?>
+        <li class="nav-item">
         <a class="nav-link" href="signup.php">Signup</a>
       </li>    
       <li class="nav-item">
         <a class="nav-link" href="login.php">Login</a>
-      </li>    
+      </li>  
+      <?php 
+      }
+      ?>
+
+
+
+        
     </ul>
   </div>  
 </nav>

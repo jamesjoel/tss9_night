@@ -19,7 +19,7 @@
 
 */
 // Step I ------ connect to the database
-$con = mysqli_connect("localhost", "root", "", "tss9");
+include("db.php");
 
 
 
