@@ -93,7 +93,14 @@
                 <?php 
                 }
                 ?>
-                <li><a href="new-post.html"><span class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2">+</span> Post a Job</span></a></li>
+                <?php
+                if(isset($_SESSION['is_user_logged_in']))
+                { ?>
+                  <li><a href="#"><span class="rounded bg-primary py-2 px-3 text-white"> <?php echo $_SESSION['name']; ?></span></a></li>
+
+                <?php 
+                }
+                ?>
               </ul>
             </nav>
           </div>

@@ -1,5 +1,11 @@
 <?php
+include("db.php");
 include("header.php");
+$id = $_SESSION['id'];
+$que = "SELECT * FROM employee_profile WHERE employee_id = $id";
+$res = mysqli_query($con, $que);
+
+
 ?>
 <div class="site-section bg-light">
       <div class="container">
@@ -18,36 +24,45 @@ include("header.php");
                 <h4>My Profile</h4>
             </div>
             <div class="card-body">
-                <div class="form-group">
-                    <label>Profile Name</label>
-                    <input type="text" name="profile_name" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Experiance</label>
-                    <select class="form-control">
-                        <?php
-                        for($i=0; $i<=10; $i++)
-                        {
-                            echo "<option>".$i."</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Previouse Company Name</label>
-                    <input type="text" name="company_name" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Detail</label>
-                    <textarea class="form-control"></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Key Skills</label>
-                    <textarea class="form-control"></textarea>
-                </div>
+                <?php
+                if(mysqli_num_rows($res)==1)
+                { 
+                    $data = mysqli_fetch_assoc($res);
+                    ?>
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>Profile Name</td>
+                            <td><?php echo $data['profile_name'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>Experiance</td>
+                            <td><?php echo $data['experiance'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>Old Company Name</td>
+                            <td><?php echo $data['company_name'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>Detail</td>
+                            <td><?php echo $data['detail'] ?></td>
+                        </tr>
+                        <tr>
+                            <td>Key Skills</td>
+                            <td><?php echo $data['key_skills'] ?></td>
+                        </tr>
+                        
+                    </table>
+
+                <?php }
+                else
+                { ?>
+                    <h5>You not set your profile yet, please Update your profile</h5>
+                <?php 
+                }
+                ?>
             </div>
             <div class="card-footer">
-                <input type="submit" value="Create Profile" class="btn btn-primary">
+                <a href="edit_profile.php" class="btn btn-primary">Update Profile</a>
             </div>
         </div>
     </div>
