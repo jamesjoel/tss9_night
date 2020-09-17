@@ -14,8 +14,18 @@ $res = mysqli_query($con, $que);
 <div class="site-section bg-light">
       <div class="container">
         <div class="row justify-content-start text-left mb-5">
+          <p class="text-center text-danger">
+              <?php
+              if(isset($_SESSION['msg']))
+              {
+                echo $_SESSION['msg'];
+                unset($_SESSION['msg']);
+              }
+              ?>
+            </p>
           <div class="col-md-9" data-aos="fade">
             <h2 class="font-weight-bold text-black">Recent Jobs</h2>
+
           </div>
           <div class="col-md-3" data-aos="fade" data-aos-delay="200">
             <a href="#" class="btn btn-primary py-3 btn-block"><span class="h5">+</span> Post a Job</a>
@@ -26,6 +36,7 @@ $res = mysqli_query($con, $que);
         <?php
         while($data = mysqli_fetch_assoc($res))
         { 
+          // print_r($data);
         ?>
 
         <div class="row" data-aos="fade">
@@ -71,7 +82,7 @@ $res = mysqli_query($con, $que);
 
               <div class="ml-auto">
                 
-                <a href="job-single.html" class="btn btn-primary py-2">Apply Job</a>
+                <a href="apply_job.php?id=<?php echo $data['id'] ?>&companyid=<?php echo $data['company_id'] ?>" class="btn btn-primary py-2">Apply Job</a>
               </div>
            </div>
 
