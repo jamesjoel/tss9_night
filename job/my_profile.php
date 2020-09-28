@@ -35,6 +35,10 @@ $res = mysqli_query($con, $que);
                             <td><?php echo $data['profile_name'] ?></td>
                         </tr>
                         <tr>
+                            <td>Your Resume</td>
+                            <td><a download href="resumes/<?php echo $data['resume'];?>">download</a></td>
+                        </tr>
+                        <tr>
                             <td>Experiance</td>
                             <td><?php echo $data['experiance'] ?></td>
                         </tr>

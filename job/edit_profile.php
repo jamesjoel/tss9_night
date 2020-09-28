@@ -2,9 +2,13 @@
 include("db.php");
 include("header.php");
 
+
+
+
 $id = $_SESSION['id'];
 $que = "SELECT * FROM employee_profile WHERE employee_id = $id";
 $res = mysqli_query($con, $que);
+
 if(mysqli_num_rows($res)==1)
 {
     $data = mysqli_fetch_assoc($res);
@@ -19,6 +23,7 @@ else
 
 }
 
+// print_r($data);die;
 // print_r($data);
 // die;
 
@@ -34,7 +39,7 @@ else
 
         <div class="row" data-aos="fade">
          <div class="col-md-12" style="min-height: 400px">
-        <form action="save_profile.php" method="post">
+        <form enctype="multipart/form-data" action="save_profile.php" method="post">
         <div class="card">
             <div class="card-header">
                 <h4>My Profile</h4>
@@ -43,6 +48,10 @@ else
                 <div class="form-group">
                     <label>Profile Name</label>
                     <input type="text" value="<?php echo $data['profile_name'] ?>" name="profile_name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Upload Resume</label>
+                    <input type="file" multiple name="resume[]" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Experiance</label>

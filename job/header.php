@@ -61,6 +61,7 @@
                     { ?>
                       <li><a href="dashboard.php">Dashboard</a></li>
                       <li><a href="create_job.php">Create Job</a></li>
+                      <li><a href="your_job.php">Your Job</a></li>
                       <li><a href="logout.php">Logout</a></li>
                     <?php 
                     }
