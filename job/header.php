@@ -133,29 +133,27 @@
               </ul>
               <div class="tab-content bg-white p-4 rounded" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-job" role="tabpanel" aria-labelledby="pills-job-tab">
-                  <form action="#" method="post">
+                  <form action="index.php" method="get">
                     <div class="row">
                       <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                        <input type="text" class="form-control" placeholder="eg. Web Developer">
+                        <input type="text" name="keyword" class="form-control" placeholder="eg. Web Developer">
                       </div>
                       <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
                         <div class="select-wrap">
                           <span class="icon-keyboard_arrow_down arrow-down"></span>
-                          <select name="" id="" class="form-control">
+                          <select name="type" id="" class="form-control">
                             <option value="">Category</option>
-                            <option value="fulltime">Full Time</option>
-                            <option value="fulltime">Part Time</option>
-                            <option value="freelance">Freelance</option>
-                            <option value="internship">Internship</option>
-                            <option value="internship">Termporary</option>
+                            <option>Part-Time</option>
+                              <option>Full-Time</option>
+                              <option>Internship</option>
+                              <option>Freelance</option>
+                              <option>Temporary</option>
                           </select>
                         </div>
                       </div>
+                      
                       <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                        <input type="text" class="form-control form-control-block search-input" id="autocomplete" placeholder="Location" onFocus="geolocate()">
-                      </div>
-                      <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
-                        <input type="submit" class="btn btn-primary btn-block" value="Search">
+                        <input type="submit" name="search_btn" class="btn btn-primary btn-block" value="Search">
                       </div>
                     </div>
                   </form>

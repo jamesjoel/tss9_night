@@ -2,14 +2,42 @@
 include('db.php');
 include("header.php");
 
-$que = "SELECT * FROM job";
-$res = mysqli_query($con, $que);
+
 // convert $res to assoctive array
 // $data = mysqli_fetch_assoc($res);
+$que = "SELECT * FROM job LEFT JOIN company ON job.company_id = company.id";
+
+if(isset($_GET['search_btn']))
+{
+  // print_r($_GET);
+  $keyword = $_GET['keyword'];
+  $type = $_GET['type'];
+  if($keyword !="" && $type == "")
+  {    
+    $que="SELECT * FROM job LEFT JOIN company ON job.company_id = company.id WHERE job.title LIKE '%$keyword%'";
+  }
+  if($keyword == "" && $type != "")
+  {
+    $que="SELECT * FROM job LEFT JOIN company ON job.company_id = company.id WHERE job.type = '$type'";
+
+  }
+  if($keyword != "" && $type !="")
+  {
+    $que = "SELECT * FROM job LEFT JOIN company ON job.company_id = company.id WHERE job.title LIKE '%$keyword%' AND job.type = '$type'";
+  }
+  
+
+  
+}
 
 
+/*
 
+  WHERE age = 25 AND city = 'indore'
 
+*/
+
+$res = mysqli_query($con, $que);
 ?>
 <div class="site-section bg-light">
       <div class="container">
@@ -75,8 +103,8 @@ $res = mysqli_query($con, $que);
                  </div>
                </div>
                <div class="job-post-item-body d-block d-md-flex">
-                 <div class="mr-3"><span class="fl-bigmug-line-portfolio23"></span> <a href="#">Facebook, Inc.</a></div>
-                 <div><span class="fl-bigmug-line-big104"></span> <span>New York City, USA</span></div>
+                 <div class="mr-3"><span class="fl-bigmug-line-portfolio23"></span> <a href="#"><?php echo $data['company_name'] ?></a></div>
+                 <div><span class="fl-bigmug-line-big104"></span> <span><?php echo $data['city']; ?></span></div>
                </div>
               </div>
 
