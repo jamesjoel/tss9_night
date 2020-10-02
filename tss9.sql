@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 23, 2020 at 06:22 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.31
+-- Generation Time: Oct 02, 2020 at 05:40 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -145,7 +145,7 @@ CREATE TABLE `employee_profile` (
 
 INSERT INTO `employee_profile` (`id`, `employee_id`, `profile_name`, `experiance`, `company_name`, `detail`, `key_skills`, `resume`) VALUES
 (1, 2, 'Developer', 3, 'Kalptaru', 'sfg sdfgsdfgsdfg', 'Developer, Designer', ''),
-(2, 1, 'Manager', 5, 'TCS', 'sdfgsdgs sdfg sg sdfgdg', 'HR Manager, Management', ''),
+(2, 1, 'Manager', 5, 'TCS', 'sdfgsdgs sdfg sg sdfgdg', 'HR Manager, Management', 'README.md'),
 (3, 3, 'Designer-Demo', 2, 'Demo', 'sdfg sdlk ;lk dfsg lkeroi dvlk eroik dl;kf oker lgk', 'Photoshop, HTML, CSS', ''),
 (4, 5, 'Developer', 3, 'Kalptaru', 'sf asdf asdf asdf', 'PHP, HTML', 'Amplify (6).docx');
 
