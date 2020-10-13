@@ -13,7 +13,7 @@ include("header.php");
 
         <div class="row" data-aos="fade">
          <div class="col-md-12" style="min-height: 400px">
-              <form action="" method="post">
+              <form action="save.php" method="post">
         <div class="card">
             <div class="card-header">
                 <h4>Registration</h4>
