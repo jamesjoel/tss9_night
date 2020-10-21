@@ -44,9 +44,20 @@ class Home extends CI_Controller{
 		{
 			// print_r($this->input->post());
 			$saveArr = $this->input->post();
+
+			unset($saveArr['re_pass']);
+
+			$this->load->model("User_model");
+			$this->User_model->save($saveArr);
+			redirect("home/login");
 		}
 
 		
+	}
+	function login()
+	{
+		$this->load->view("header");
+		$this->load->view("login");
 	}
 
 	
