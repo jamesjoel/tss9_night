@@ -24,20 +24,32 @@ class Home extends CI_Controller{
 	}
 	function signup()
 	{
+		$this->load->library("form_validation");
+		// sample error msg : The .... filed is require.
+		$this->form_validation->set_rules("full_name", "Full Name", "required");
+		$this->form_validation->set_rules("username", "Username/Email", "required|valid_email");
+		$this->form_validation->set_rules("password", "Password", "required");
+		$this->form_validation->set_rules("re_pass", "Re-Password", "required|matches[password]");
+		$this->form_validation->set_rules("address", "Adderss", "required");
+		$this->form_validation->set_rules("city", "City", "required");
+		$this->form_validation->set_rules("contact", "Contact", "required|numeric|exact_length[10]");
+		$this->form_validation->set_rules("gender", "Gender", "required");
 
-		$this->load->view("header");
-		$this->load->view("signup");
+		if($this->form_validation->run()==false) // if any one error then if condi is exe.
+		{
+			$this->load->view("header");
+			$this->load->view("signup");
+		}
+		else
+		{
+			// print_r($this->input->post());
+			$saveArr = $this->input->post();
+		}
+
+		
 	}
 
-	function save()
-	{
-		// $_POST
-		// print_r($this->input->post());
-		$a = $this->input->post("full_name");
-		$b = $this->input->post("address");
-		$c = $this->input->post("city");
-
-	}
+	
 
 
 
