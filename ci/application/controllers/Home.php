@@ -1,4 +1,52 @@
 <?php
+/*
+		session is pre-defined global varibal which avalable of all pages in the application when its create (24min).
+
+		PHP 							CI 
+
+		session_start()					$this->load->library() or load in autoload.php
+
+					------- Creating a Session --------
+
+		$_SESSION['name']="rohit";		$this->session->set_userdata("name", "rohit")
+		$_SESSION['age']=25;			$this->session->set_userdata("age", 25)
+
+
+					------- Fetching a Session --------
+		echo $_SESSION['name'];			echo $this->session->userdata("name");
+		echo $_SESSION['age'];			echo $this->session->userdata("age");
+
+
+					------- Deleting a Session --------
+
+		******SINGLE
+		unset($_SESSION['name']);		$this->session->unset_userdata("name");
+
+		******Whole Session
+		session_destroy()				$this->session->sess_destroy();
+
+
+
+============================ Flash Data (One Time Message) ===============================
+
+									$this->session->set_flashdata("msg", "your message");
+
+
+						and another page  ---- echo $this->session->flashdata("msg");
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
 
 class Home extends CI_Controller{
 
@@ -58,6 +106,37 @@ class Home extends CI_Controller{
 	{
 		$this->load->view("header");
 		$this->load->view("login");
+	}
+	function auth()
+	{
+		// print_r($this->input->post());
+		$u = $this->input->post("username");
+		$p = $this->input->post("password");
+		$this->load->model("User_model");
+		$res=$this->User_model->get_by_username($u);
+
+		if($res->num_rows()==1)
+		{
+			$data = $res->row_array();
+			if($data['password'] == $p)
+			{
+				$this->session->set_userdata("id", $data['id']);
+				$this->session->set_userdata("name", $data['full_name']);
+				$this->session->set_userdata("is_user_logged_in", true);
+
+			}
+			else
+			{
+				$this->session->set_flashdata("msg", "This Password is Incorrect");
+				redirect("home/login");
+			}
+		}
+		else // username is not correct
+		{
+			$this->session->set_flashdata("msg", "This Username and Password is Incorrect");
+			redirect("home/login");
+		}
+
 	}
 
 	

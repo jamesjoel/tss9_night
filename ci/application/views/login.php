@@ -11,7 +11,7 @@
 		// echo validation_errors();
 		?>
 		<!--  if we add CI validation on any form then we have to create action is empty -->
-		<form action="" method="post">
+		<form action="<?php echo site_url('home/auth') ?>" method="post">
 		<div class="card">
 			<div class="card-header">
 				<h5>Login</h5>
@@ -28,6 +28,9 @@
 					<input type="password" name="password" class="form-control">
 					
 				</div>
+				<p class="text-danger">
+					<?php echo $this->session->flashdata("msg"); ?>
+				</p>
 				
 			</div>
 			<div class="card-footer">
@@ -39,3 +42,29 @@
 </div>
 </body>
 </html>
+
+
+
+<!-- 
+		<form action="<?php site_url() ?>"
+
+
+		<a href="site_url()"
+
+
+		------------------------------------------
+		<link
+		<sctip>						base_url()
+		<img 
+
+
+
+
+
+
+
+
+
+
+
+ -->
