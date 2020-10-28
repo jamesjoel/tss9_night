@@ -117,12 +117,13 @@ class Home extends CI_Controller{
 
 		if($res->num_rows()==1)
 		{
-			$data = $res->row_array();
+			$data = $res->row_array(); // convert object to array
 			if($data['password'] == $p)
 			{
 				$this->session->set_userdata("id", $data['id']);
 				$this->session->set_userdata("name", $data['full_name']);
 				$this->session->set_userdata("is_user_logged_in", true);
+				redirect("/user");
 
 			}
 			else
