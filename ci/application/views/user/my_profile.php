@@ -35,6 +35,7 @@
 			 	</tr>
 			 </table>
 			 <a href="<?php echo site_url('user/edit') ?>" class="btn btn-info">Edit</a>
+			 <a href="<?php echo site_url('user/change_pass') ?>" class="btn btn-info">Change Password</a>
 		</div>
 	</div>
 </div>
